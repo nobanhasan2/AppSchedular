@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="schedule"
+            type="com.noban.appschedular.data.model.ScheduleEntity" />
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_margin="5dp">
+
+        <TextView
+            style="@style/TextViewPoppins.style"
+            android:id="@+id/textView"
+            android:text="@{schedule.scheduleName}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+
+            android:textSize="36sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_edit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_cancel"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_delete_forever_24" />
+
+        <TextView
+            style="@style/TextViewPoppins.small.style"
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{schedule.isCompleted ? `Executed` : `Scheduled`}"
+            android:textColor="@color/colorPrimaryLight"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            style="@style/TextViewPoppins.small.style"
+            android:id="@+id/tv_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Edit"
+            android:visibility="@{schedule.isCompleted ? View.GONE : View.VISIBLE}"
+            android:textColor="@color/purple_700"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_cancel"
+            app:layout_constraintEnd_toStartOf="@+id/iv_cancel"
+            app:layout_constraintTop_toTopOf="@+id/iv_cancel" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="10dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/iv_cancel"
+            app:layout_constraintStart_toStartOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="parent">
+
+        </View>
+
+        <TextView
+            android:id="@+id/tv_date_time"
+            style="@style/TextViewPoppins.small.style"
+            formatDate="@{schedule.scheduleTime}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            tools:textSize="16sp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">App Schedular</string>
+    <string name="pick">Pick Date and Time first</string>
+    <string name="schedule_created">Schedule Created</string>
+    <string name="schedule_updated">Schedule Updated</string>
+    <string name="past_time">Past Time Not Allowed</string>
+
+</resources>
